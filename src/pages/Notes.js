@@ -1,6 +1,6 @@
-import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Container, Grid, Paper } from '@mui/material'
+import NoteCard from '../components/NoteCard'
 
 export default function Notes() {
   const [notes, setNotes] = useState([])
@@ -12,11 +12,18 @@ export default function Notes() {
   }, [])
 
   return (
-    <div>
+    <Container>
       Notes page
-      {notes.map(note => (
-        <p key={note.id}>{note.title}</p>
-      ))}
-    </div>
+
+      <Grid container>
+        {notes.map(note => (
+          <Grid item key={note.id} xs={12} md={6} lg={4}>
+            <Paper>{note.title}</Paper>
+          </Grid>
+        ))}
+      </Grid>
+
+      
+    </Container>
   )
 }
