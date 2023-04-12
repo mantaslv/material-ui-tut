@@ -10,15 +10,16 @@ export default function Notes() {
       .then(res => res.json())
       .then(data => setNotes(data))
   }, [])
+  
 
   return (
     <Container>
       Notes page
 
-      <Grid container>
+      <Grid container spacing={3}>
         {notes.map(note => (
           <Grid item key={note.id} xs={12} md={6} lg={4}>
-            <Paper>{note.title}</Paper>
+            <NoteCard note={note}/>
           </Grid>
         ))}
       </Grid>
