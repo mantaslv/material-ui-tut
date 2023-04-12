@@ -1,5 +1,6 @@
 import React from 'react'
-import { Typography, Button, Container } from '@material-ui/core'
+import { Typography, Button, Container } from '@mui/material'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 
 export default function Create() {
   return (
@@ -18,18 +19,10 @@ export default function Create() {
         type='submit'
         color='secondary'
         variant='contained'
+        endIcon={<KeyboardArrowRightIcon />}
       >
         Submit
       </Button>
-
-      {/* <Button type='submit'>Submit</Button>
-      <Button type='submit' color='secondary' variant='outlined'>Submit</Button> */}
-
-      {/* <ButtonGroup color='secondary' variant='contained'>
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
-      </ButtonGroup> */}
     </Container>
   )
 }
