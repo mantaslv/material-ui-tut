@@ -4,17 +4,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
-  btn: {
-    fontSize: 60,
-    backgroundColor: 'violet',
-    '&:hover': {
-      backgroundColor: 'blue'
-    }
-  },
-  title: {
-    textDecoration: 'underline',
-    marginBottom: 20
-  }
+  
 })
 
 export default function Create() {
