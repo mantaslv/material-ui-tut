@@ -1,16 +1,28 @@
-import React from 'react'
-import { Typography, Button, Container, TextField } from '@mui/material'
+import React, { useState } from 'react'
+import { 
+  Typography, 
+  Button, 
+  Container, 
+  TextField, 
+  Radio, 
+  RadioGroup, 
+  FormControlLabel,
+  FormControl,
+  FormLabel
+} from '@mui/material'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { makeStyles } from '@mui/styles'
-import { useState } from 'react'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   field: {
-    marginTop: 20,
-    marginBottom: 20,
-    display: 'block'
+    '&.MuiTextField-root': {
+      marginTop: 20,
+      marginBottom: 20,
+      display: 'block'
+    }
   }
-})
+}))
+
 
 export default function Create() {
   const classes = useStyles()
@@ -18,6 +30,7 @@ export default function Create() {
   const [details, setDetails] = useState('')
   const [titleError, setTitleError] = useState(false)
   const [detailsError, setDetailsError] = useState(false)
+  const [category, setCategory] = useState('todos')
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -30,9 +43,8 @@ export default function Create() {
     if (details === '') {
       setDetailsError(true)
     }
-
     if (title && details) {
-      console.log(title, details);
+      console.log({title, details, category});
     }
   }
   
@@ -49,9 +61,8 @@ export default function Create() {
       </Typography>
 
       <form noValidate autoComplete='off' onSubmit={handleSubmit}>
-        <TextField
+        <TextField className={classes.field}
           onChange={(e) => setTitle(e.target.value)}
-          className={classes.field}
           label='Note Title'
           variant='outlined'
           color='secondary'
@@ -59,9 +70,9 @@ export default function Create() {
           required
           error={titleError}
         />
-        <TextField
+
+        <TextField className={classes.field}
           onChange={(e) => setDetails(e.target.value)}
-          className={classes.field}
           label='Details'
           variant='outlined'
           color='secondary'
@@ -71,8 +82,20 @@ export default function Create() {
           required
           error={detailsError}
         />
-        <Button
-          className={classes.btn}
+
+        <FormControl className={classes.field}>
+          <FormLabel>Note Category</FormLabel>
+          <RadioGroup value={category} onChange={(e) => setCategory(e.target.value)}>
+            <FormControlLabel value='money' control={<Radio />} label='Money'/>
+            <FormControlLabel value='todos' control={<Radio />} label='Todos'/>
+            <FormControlLabel value='reminders' control={<Radio />} label='Reminders'/>
+            <FormControlLabel value='work' control={<Radio />} label='Work'/>
+          </RadioGroup>
+        </FormControl>
+
+        <br/>
+
+        <Button 
           onClick={() => console.log('you clicked me')}
           type='submit'
           color='secondary'
