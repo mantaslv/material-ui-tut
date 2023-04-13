@@ -1,5 +1,5 @@
 import { AddCircleOutlineOutlined, SubjectOutlined } from '@mui/icons-material'
-import { Drawer, Typography, List, ListItemIcon, ListItemText, ListItemButton, AppBar, Toolbar } from '@mui/material'
+import { Drawer, Typography, List, ListItemIcon, ListItemText, ListItemButton, AppBar, Toolbar, Avatar } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min'
@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme) => {
         toolbar: theme.mixins.toolbar,
         date: {
             flexGrow: 1
+        },
+        avatar: {
+            marginLeft: theme.spacing(2)
         }
     }
 })
@@ -77,6 +80,7 @@ export default function Layout({ children }) {
                     <Typography>
                         Mantas
                     </Typography>
+                    <Avatar className={classes.avatar} src='https://media.licdn.com/dms/image/D4E35AQEJAHufmzTSbg/profile-framedphoto-shrink_400_400/0/1678980356821?e=1682010000&v=beta&t=nfhKGEfUpi8G7NJZGvd05r6sE58YoswsSwbRVpv28BY'/>
                 </Toolbar>
             </AppBar>
 
