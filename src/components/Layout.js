@@ -6,7 +6,7 @@ import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.m
 
 const drawerWidth = 240
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(() => ({
     page: {
         background: '#f9f9f9',
         width: '100%'
@@ -21,9 +21,11 @@ const useStyles = makeStyles({
         display: 'flex'
     },
     active: {
-        background: '#f4f4f4'
-    }
-})
+        '&.Mui-selected': {
+            background: '#f4f4f4'
+        }
+    }    
+}))
 
 export default function Layout({ children }) {
     const classes = useStyles()
@@ -63,9 +65,10 @@ export default function Layout({ children }) {
                     {menuItems.map(item => (
                         <ListItemButton
                             key={item.text}
-                            onClick={() => { history.push(item.path)}}
-                            className={location.pathname === item.path ? classes.active : null}
+                            onClick={() => { history.push(item.path) }}
+                            selected={location.pathname === item.path}
                         >
+                            {console.log(item.path)}
                             <ListItemIcon>{item.icon}</ListItemIcon>
                             <ListItemText primary={item.text} />
                         </ListItemButton>
