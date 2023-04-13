@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography, Button, Container, TextField, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
+import { Typography, Button, Container, TextField, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Box, Grid } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -78,15 +78,19 @@ export default function Create() {
           </RadioGroup>
         </FormControl>
 
-        <Button
-          onClick={() => console.log('you clicked me')}
-          type='submit'
-          color='secondary'
-          variant='contained'
-          endIcon={<KeyboardArrowRightIcon />}
-        >
-          Submit
-        </Button>
+        <Box mt={2}>
+          <Grid container justifyContent="flex-end">
+            <Button
+              onClick={() => console.log('you clicked me')}
+              type='submit'
+              color='secondary'
+              variant='contained'
+              endIcon={<KeyboardArrowRightIcon />}
+            >
+              Submit
+            </Button>
+          </Grid>
+        </Box>
       </form>
     </Container>
   );
